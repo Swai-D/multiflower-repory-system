@@ -16,14 +16,7 @@ class ReportController extends Controller
      */
     public function index()
       {
-        //    if (Auth::user()->status == "Not Authorized Yet") {
-        //     return view('HomeBladeFiles.login')->with('Message', 'Your not Authorized to login yet, Please contact your Manager');
-        // }
-        //
-        // else {
-        //   $reports = Report::orderBy('created_at', 'desc')->get();
-        //   return view('ReportBlade.index', compact('reports'));
-        // }
+      
         $reports = Report::orderBy('created_at', 'desc')->get();
         return view('ReportBlade.index', compact('reports'));
 
