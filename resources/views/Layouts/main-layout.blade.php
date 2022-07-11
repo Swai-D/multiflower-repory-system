@@ -148,7 +148,7 @@
               </li>
 
               <li class="nav-item">
-                <a href="/Multiflower-Report-System/Multiflower-Messenger" class="nav-link @yield('direct-message-nav-active')">
+                <a href="/Multiflower-Messenger" class="nav-link @yield('direct-message-nav-active')">
                     <img src="/assets/img/chat.png" alt="" style="height:30px;">
                   <p>Direct Chat</p>
                 </a>
