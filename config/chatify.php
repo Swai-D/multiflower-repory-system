@@ -22,7 +22,7 @@ return [
     |-------------------------------------
     */
     'routes' => [
-        'prefix' => env('CHATIFY_ROUTES_PREFIX', 'Multiflower-Messenger'),
+        'prefix' => env('CHATIFY_ROUTES_PREFIX', '/Multiflower-Report-System/Multiflower-Messenger'),
         'middleware' => env('CHATIFY_ROUTES_MIDDLEWARE', ['web','auth']),
         'namespace' => env('CHATIFY_ROUTES_NAMESPACE', 'Chatify\Http\Controllers'),
     ],
