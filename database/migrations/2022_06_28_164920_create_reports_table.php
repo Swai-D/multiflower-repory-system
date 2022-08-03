@@ -18,6 +18,8 @@ class CreateReportsTable extends Migration
             $table->string('ReportSubject');
             $table->longText('ReportBody');
             $table->string('userId');
+            $table->string('userName');
+            $table->string('userEmail');
             $table->timestamps();
         });
     }

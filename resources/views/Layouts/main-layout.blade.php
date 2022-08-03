@@ -148,7 +148,7 @@
               </li>
 
               <li class="nav-item">
-                <a href="/Multiflower-Messenger" class="nav-link @yield('direct-message-nav-active')">
+                <a href="/Multiflower-Report-System/Messenger-page" class="nav-link @yield('direct-message-nav-active')">
                     <img src="/assets/img/chat.png" alt="" style="height:30px;">
                   <p>Direct Chat</p>
                 </a>
@@ -157,12 +157,16 @@
 
                <br>
               <li class="nav-header">Action</li>
-              <li class="nav-item">
-                <a href="/Multiflower-Report-System/manager-home-page" class="nav-link @yield('manager-nav-active')">
-                    <img src="/assets/img/unauthorized-person.png" alt="" style="height:30px;">
-                  <p>Manager Access</p>
-                </a>
-              </li>
+
+             @if(Auth::user()->section == 'manager')
+             <li class="nav-item">
+               <a href="/Multiflower-Report-System/manager-home-page" class="nav-link @yield('manager-nav-active')">
+                   <img src="/assets/img/unauthorized-person.png" alt="" style="height:30px;">
+                 <p>Manager Access</p>
+               </a>
+             </li>
+             @endif
+
               <li class="nav-item">
                 <a href="{{ route('logout') }}" class="nav-link" onclick="event.preventDefault();
                               document.getElementById('logout-form').submit();">

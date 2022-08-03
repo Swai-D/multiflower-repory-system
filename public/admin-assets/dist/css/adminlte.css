@@ -34463,7 +34463,7 @@ a.close.disabled, a.disabled.mailbox-attachment-close {
   background-color: #343a40;
   bottom: 0;
   color: #fff;
-  height: 250px;
+  height: auto;
   overflow: auto;
   position: absolute;
   top: 0;

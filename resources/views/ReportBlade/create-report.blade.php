@@ -57,7 +57,9 @@
 
               <div class="form-group">
                 <input class="form-control" placeholder="Subject:" name="ReportSubject" value="{{old('ReportSubject')}}">
-                <input type="hidden" class="form-control"  name="userId" value="1">
+                <input type="hidden" class="form-control"  name="userId" value="{{Auth::user()->id}}">
+                <input type="hidden" class="form-control"  name="userName" value="{{Auth::user()->name}}">
+                <input type="hidden" class="form-control"  name="userEmail" value="{{Auth::user()->email}}">
                  <div class="text-danger">{{$errors->first('ReportSubject')}}</div>
               </div>
 
@@ -74,7 +76,6 @@
             <!-- /.card-body -->
             <div class="card-footer">
               <div class="float-right">
-                <button type="button" class="btn btn-success"><i class="fas fa-eye"></i> Preview</button>
                 <button type="submit" class="btn btn-primary"><i class="far fa-envelope"></i> Send</button>
               </div>
               <a href="/Multiflower-Report-System/home-page" type="reset" class="btn btn-danger"><i class="fas fa-times"></i> Discard</a>

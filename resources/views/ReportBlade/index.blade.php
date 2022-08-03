@@ -35,6 +35,14 @@
     </div><!-- /.container-fluid -->
   </section>
 
+
+  @if(session()->has('Message'))
+     <div class="alert alert justify-content-center" role = "alert">
+       <p class="lead" style="color: #f33155">
+         {{session()->get('Message')}}
+       </p>
+     </div>
+ @endif
   <!-- Main content -->
   <section class="content">
     <div class="container-fluid">
@@ -63,7 +71,7 @@
                   <tr>
                     <td>{{$loop->iteration}}</td>
                     <td class="mailbox-name"><a href="/Multiflower-Report-System/view-report/{{$report->id}}">{{$report->ReportSubject}} </a></td>
-                    <td>David Swai</td>
+                    <td>{{$report->userName}}</td>
                     <td>{{$report->created_at->diffForHumans()}}</td>
                   </tr>
 

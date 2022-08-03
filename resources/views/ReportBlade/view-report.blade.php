@@ -10,6 +10,8 @@
 <link rel="stylesheet" href="/admin-assets/dist/css/adminlte.min.css">
 @endsection
 
+@section('my-report-nav-active', 'active')
+
 @section('page-content')
 <div class="content-wrapper">
   <!-- Content Header (Page header) -->
@@ -51,7 +53,7 @@
           <div class="card-body p-0">
             <div class="mailbox-read-info">
               <h5>{{$report->ReportSubject}}</h5>
-              <h6>From: support@adminlte.io
+              <h6>From: {{$report->userEmail}}
                 <span class="mailbox-read-time float-right">{{$report->created_at->format('d M Y, h:m')}}</span></h6>
             </div>
             <!-- /.mailbox-read-info -->
@@ -60,12 +62,12 @@
                 <a href="" class="btn btn-danger btn-sm" data-container="body" title="Delete">
                   <i class="far fa-trash-alt"></i>
                 </a>
-                <a href="/Multiflower-Report-System/reply-report"  class="btn btn-default btn-sm" data-container="body" title="Reply" style="color:gray;">
+                <!-- <a href="/Multiflower-Report-System/reply-report"  class="btn btn-default btn-sm" data-container="body" title="Reply" style="color:gray;">
                   <i class="fas fa-reply"></i>
-                </a>
-                <a  href="" class="btn btn-primary btn-sm" data-container="body" title="Forward">
+                </a> -->
+                <!-- <a  href="" class="btn btn-primary btn-sm" data-container="body" title="Forward">
                   <i class="fas fa-share"></i>
-                </a>
+                </a> -->
               </div>
               <!-- /.btn-group -->
               <button type="button" class="btn btn-success btn-sm" title="Print">
@@ -83,8 +85,8 @@
           <!-- /.card-footer -->
           <div class="card-footer">
             <div class="float-right">
-              <a href="/Multiflower-Report-System/multiflower-messenger" class="btn btn-default"><i class="fas fa-reply" ></i> Reply</a>
-              <a href="/Multiflower-Report-System/multiflower-messenger" class="btn btn-default"><i class="fas fa-share" style="color:blue;"></i> Forward</a>
+              <!-- <a href="/Multiflower-Report-System/direct-message-show-page" class="btn btn-default"><i class="fas fa-reply" ></i> Reply</a> -->
+              <!-- <a href="/Multiflower-Report-System/direct-message-home-page" class="btn btn-default"><i class="fas fa-share" style="color:blue;"></i> Forward</a> -->
             </div>
             <button type="button" class="btn btn-danger"><i class="far fa-trash-alt"></i> Delete</button>
             <button type="button" class="btn btn-success"><i class="fas fa-print"></i> Print</button>

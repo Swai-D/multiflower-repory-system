@@ -72,7 +72,7 @@
                   <img class="direct-chat-img" src="/admin-assets/dist/img/user1-128x128.jpg" alt="message user image">
                   <!-- /.direct-chat-img -->
                   <div class="direct-chat-text">
-                    Is this template really for free? That's unbelievable!
+                  Keffiyeh blog actually fashion axe vegan, irony biodiesel. Cold-pressed hoodie chillwave put a bird on it aesthetic, bitters brunch meggings vegan iPhone. Dreamcatcher vegan scenester mlkshk. Ethical master cleanse Bushwick, occupy Thundercats banjo cliche ennui farm-to-table mlkshk fanny pack gluten-free. Marfa butcher vegan quinoa, bicycle rights disrupt tofu scenester chillwave 3 wolf moon asymmetrical taxidermy pour-over. Quinoa tote bag fashion axe, Godard disrupt migas church-key tofu blog locavore. Thundercats cronut polaroid Neutra tousled, meh food truck selfies narwhal American Apparel.
                   </div>
                   <!-- /.direct-chat-text -->
                 </div>

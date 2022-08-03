@@ -17,6 +17,8 @@ class CreateUsersTable extends Migration
             $table->id();
             $table->string('name');
             $table->string('section');
+            $table->string('userType')->default('Normal');
+            $table->string('avatar')->default('https://kilimofy.s3.amazonaws.com/Uploads/avatars/default.png');
             $table->string('status')->default('Not Authorized Yet');
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();

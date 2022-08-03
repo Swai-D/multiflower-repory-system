@@ -42,9 +42,10 @@
         <div class="col-12">
           <!-- /.card -->
 
+
           <div class="card">
             <div class="card-header">
-              <h3 class="card-title">All Davy Swai Reports</h3>
+              <h3 class="card-title">All My Report(s)</h3>
             </div>
             <!-- /.card-header -->
             <div class="card-body">
@@ -59,35 +60,13 @@
 
                 </thead>
                 <tbody>
+                @foreach($userReports as $myReports)
                   <tr>
-                    <td>1</td>
-                    <td class="mailbox-name"><a href="/Multiflower-Report-System/view-report">Alexander Pierce</a></td>
+                    <td>{{$loop->iteration}}</td>
+                    <td class="mailbox-name"><a href="/Multiflower-Report-System/view-report/{{$myReports->id}}">{{$myReports->ReportSubject}}</a></td>
 
                   </tr>
-
-                  <tr>
-                    <td>2</td>
-                    <td class="mailbox-name"><a href="/Multiflower-Report-System/view-report">Davy Pierce</a></td>
-
-                  </tr>
-                  <tr>
-                    <td>3</td>
-                    <td class="mailbox-name"><a href="/Multiflower-Report-System/view-report">Swai Pierce</a></td>
-
-                  </tr>
-
-                  <tr>
-                    <td>4</td>
-                    <td class="mailbox-name"><a href="/Multiflower-Report-System/view-report">Swai Pierce</a></td>
-
-                  </tr>
-
-                  <tr>
-                    <td>5</td>
-                    <td class="mailbox-name"><a href="/Multiflower-Report-System/view-report">Swai Pierce</a></td>
-
-                  </tr>
-
+                  @endforeach
 
                 </tbody>
                 <tfoot>
@@ -102,6 +81,7 @@
             </div>
             <!-- /.card-body -->
           </div>
+
           <!-- /.card -->
         </div>
         <!-- /.col -->

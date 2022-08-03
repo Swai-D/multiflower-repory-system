@@ -16,7 +16,7 @@ class ReportController extends Controller
      */
     public function index()
       {
-      
+
         $reports = Report::orderBy('created_at', 'desc')->get();
         return view('ReportBlade.index', compact('reports'));
 
@@ -85,12 +85,14 @@ class ReportController extends Controller
           $content = $dom->saveHTML();
           $blog = Report::create([
             'userId' => $request->userId,
+            'userName' => $request->userName,
+            'userEmail' => $request->userEmail,
             'ReportSubject' => $request->ReportSubject,
             'ReportBody' => $content,
 
        ]);
 
-     return redirect('/Multiflower-Report-System/home-page');
+     return redirect('/Multiflower-Report-System/home-page')->with('Message', 'Your Report was successfully Submited !');
    }
 
     /**
@@ -140,8 +142,10 @@ class ReportController extends Controller
     }
 
     public function myReports()
-    {
-      return view('ReportBlade.my-reports');
+    { $id = Auth::user()->id;
+      // dd($id);
+      $userReports = Report::where('userId', '=', $id)->get();
+      return view('ReportBlade.my-reports', compact('userReports'));
     }
 
     public function reply()
