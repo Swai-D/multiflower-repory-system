@@ -158,7 +158,7 @@
                <br>
               <li class="nav-header">Action</li>
 
-             @if(Auth::user()->section == 'manager')
+             @if(Auth::user()->userType == 'managerAccess' || Auth::user()->userType == 'admin')
              <li class="nav-item">
                <a href="/Multiflower-Report-System/manager-home-page" class="nav-link @yield('manager-nav-active')">
                    <img src="/assets/img/unauthorized-person.png" alt="" style="height:30px;">

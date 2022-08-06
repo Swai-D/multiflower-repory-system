@@ -6,7 +6,12 @@ use Illuminate\Http\Request;
 
 class HomeBladeController extends Controller
 {
-    public function loginForm()
+  public function waitingPage()
+  {
+    return view('HomeBladeFiles.waiting-page');
+  }
+
+  public function loginForm()
     {
       return view('HomeBladeFiles.login');
     }
@@ -16,10 +21,16 @@ class HomeBladeController extends Controller
       return view('HomeBladeFiles.register');
     }
 
+    
 
     public function forGotPasswordForm()
     {
       return view('HomeBladeFiles.forgot-password');
+    }
+
+    public function resendPasswordForm()
+    {
+      return view('HomeBladeFiles.resend-password');
     }
 
 

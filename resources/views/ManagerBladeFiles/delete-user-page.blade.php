@@ -26,26 +26,31 @@
   <section class="content-header">
     <div class="container-fluid">
       <div class="row mb-2">
-        <div class="col-sm-6">
-          <h1>{{$user->name}}'s Profile</h1>
+        <div class="col-1">
+
         </div>
-        <div class="col-sm-6">
+        <div class="col-sm-9">
+          @if(session()->has('Message'))
+            <div class="alert alert" role = "alert">
+              <p class="lead text-center" style="color: #f33155">
+                {{session()->get('Message')}}
+              </p>
+            </div>
+          @else
+          <h1 class="justify-content-center"style="color:red;">Are you Sure you want to delete {{$user->name}}'s Records ?</h1>
+          @endif
+        </div>
+        <div class="col-sm-2">
           <ol class="breadcrumb float-sm-right">
             <li class="breadcrumb-item"><a href="/Multiflower-Report-System/home-page">Home</a></li>
-            <li class="breadcrumb-item active">User Profile</li>
+            <li class="breadcrumb-item active">Delete Staff</li>
           </ol>
         </div>
       </div>
     </div><!-- /.container-fluid -->
   </section>
 
-  @if(session()->has('Message'))
-    <div class="alert alert" role = "alert">
-      <p class="lead text-center" style="color: #f33155">
-        {{session()->get('Message')}}
-      </p>
-    </div>
-  @endif
+
 
   <!-- Main content -->
   <section class="content">
@@ -89,13 +94,7 @@
         <!-- /.col -->
         <div class="col-md-9">
           <div class="card">
-            <div class="card-header p-2">
-              <ul class="nav nav-pills">
-                <li class="nav-item"><a class="nav-link active" href="#activity" data-toggle="tab"><i class="fa fa-eye" style="color:green"></i> User Details</a></li>
-                <li class="nav-item"><a class="nav-link" href="#timeline" data-toggle="tab"><i class="fa fa-envelope" style="color:blue"></i> Reports</a></li>
-                <li class="nav-item"><a class="nav-link" href="#edit" data-toggle="tab"><i class="fa fa-edit" style="color:blue"></i> Edit User Details</a></li>
-              </ul>
-            </div><!-- /.card-header -->
+
             <div class="card-body">
               <div class="tab-content">
                 <div class="active tab-pane" id="activity">
@@ -125,8 +124,18 @@
                             </td>
 
                           </tr>
+
                           <tr>
                             <td>2.</td>
+                            <td>Email </td>
+                            <td>
+                              <b>{{$user->email}}</b>
+                            </td>
+
+                          </tr>
+
+                          <tr>
+                            <td>3.</td>
                             <td>Section</td>
                             <td>
                               <b>{{$user->section}}</b>
@@ -135,7 +144,7 @@
                           </tr>
                           @if($user->status == 'Not Authorized Yet')
                           <tr>
-                            <td>3.</td>
+                            <td>4.</td>
                             <td>Status</td>
                             <td>
                              <b><span style="color:#f33155">{{$user->status}}</span></b>
@@ -143,7 +152,7 @@
                           </tr>
                           @else
                           <tr>
-                            <td>3.</td>
+                            <td>4.</td>
                             <td>Status</td>
                             <td>
                             <b>{{$user->status}}</b>
@@ -151,7 +160,7 @@
                           </tr>
                           @endif
                           <tr>
-                            <td>4.</td>
+                            <td>5.</td>
                             <td>Reports</td>
                             <td>
                             <b>{{$userReportsCount}}</b>
@@ -160,7 +169,7 @@
                           </tr>
 
                           <tr>
-                            <td>5.</td>
+                            <td>6.</td>
                             <td>User Type</td>
                             <td>
                               @if($user->userType == 'managerAccess')
@@ -173,7 +182,7 @@
                           </tr>
 
                           <tr>
-                            <td>6.</td>
+                            <td>7.</td>
                             <td>Join</td>
                             <td>
                               <b>{{$user->created_at->format('d M, Y')}} at   {{$user->created_at->format('H:s')}}</b>
@@ -182,149 +191,26 @@
                           </tr>
 
                         </tbody>
+
                       </table>
                     </div>
                     <!-- /.card-body -->
+
                   </div>
-
-                </div>
-                <!-- /.tab-pane -->
-                <div class="tab-pane" id="timeline">
-                  <!-- /.card-header -->
-                  <div class="card-body">
-                    <table id="example1" class="table table-bordered table-striped">
-                      <thead>
-                      <tr>
-                        <th>N0.</th>
-
-                        <th >Mail Inbox</th>
-
-                      </tr>
-
-                      </thead>
-                      <tbody>
-                      @foreach($userReports as $myReports)
-                        <tr>
-                          <td>{{$loop->iteration}}</td>
-                          <td class="mailbox-name"><a href="/Multiflower-Report-System/view-report/{{$myReports->id}}">{{$myReports->ReportSubject}}</a></td>
-
-                        </tr>
-                        @endforeach
-
-                      </tbody>
-                      <tfoot>
-                        <tr>
-                          <th>N0.</th>
-
-                          <th >Mail Inbox</th>
-
-                        </tr>
-                      </tfoot>
-                    </table>
-                  </div>
-                  <!-- /.card-body -->
-                </div>
-                <!-- /.tab-pane -->
-
-                <div class="tab-pane" id="edit">
-                  <div class="card">
-                    <div class="card-header">
-                      <h3 class="card-title">Edit {{$user->name}}'s Details</h3>
-                      <div class="card-tools">
-
-                       @if($user->userType == 'managerAccess' || $user->userType == 'admin')
-                        <a href="/Multiflower-Report-System/manager-remove-me-admin/{{$user->id}}" class="btn btn-danger " >
-                           <img src="/assets/img/unauthorized-person.png" alt="" style="height:25px;"> Remove {{$user->name}} an Admin ?
-                        </a>
-                        @else
-                        <a href="/Multiflower-Report-System/manager-make-me-admin-access/{{$user->id}}" class="btn btn-success " >
-                           <img src="/assets/img/unauthorized-person.png" alt="" style="height:25px;"> Make {{$user->name}} an Admin ?
-                        </a>
-                        @endif
-                      </div>
+                  <b>Note:</b>
+                  <p class=""><span style="color:red"><b>*</b></span> If you Delete <span style="color:red;">{{$user->name}}'s</span> Records, All His/Her Information and Reports will be Permanet Deleted <span style="color:red"><b>*</b></span></p>
+                  <div class="row">
+                    <div class="col-6">
                     </div>
-                    <!-- /.card-header -->
-                    <div class="card-body p-0">
-                    <form class="" action="/Multiflower-Report-System/manager-update-staff-page/{{$user->id}}" method="post">
-                      @csrf
-                      <table class="table ">
-                        <thead>
-                          <tr>
-                            <th style="width: 10px">#</th>
-                            <th>Title</th>
-                            <th>Description</th>
-
-                          </tr>
-                        </thead>
-                        <tbody>
-                          <tr>
-                            <td>1.</td>
-                            <td>Full Name</td>
-                            <td>
-                              <input type="text" class="form-control" name="name" value="{{old('name') ?? $user->name}}">
-                            </td>
-
-                          </tr>
-                          <tr>
-                            <td>2.</td>
-                            <td>Email</td>
-                            <td>
-                              <input type="email" class="form-control" name="email" value="{{old('email') ?? $user->email}}">
-                            </td>
-
-                          </tr>
-                          <tr>
-                            <td>3.</td>
-                            <td>Section</td>
-                            <td>
-                              <select name="section" class="form-control select2" style="width: 100%;">
-                                 <option value="Bwana Shamba" {{ $user->section == 'Bwana Shamba' ? 'selected' : '' }}>Bwana Shamba</option>
-                                 <option value="Store Keeper" {{ $user->section == 'Store Keeper' ? 'selected' : '' }}>Store Keeper</option>
-                                 <option value="Manager" {{ $user->section == 'Manager' ? 'selected' : '' }}>Manager</option>
-                               </select>
-                            </td>
-
-                          </tr>
-                          <tr>
-                            <td>4.</td>
-                            <td>Status</td>
-                            <td>
-                              <select name="status" class="form-control select2" style="width: 100%;">
-                                 <option value="Not Authorized Yet" {{ $user->status == 'Not Authorized Yet ' ? 'selected' : '' }}>Not Authorized Yet</option>
-                                 <option value="Authorized" {{ $user->status == 'Authorized' ? 'selected' : '' }}>Authorized</option>
-                               </select>
-                            </td>
-                          </tr>
-
-                          <tr>
-                            <td>5.</td>
-                            <td>User Type</td>
-                            <td>
-                              @if($user->userType == 'managerAccess')
-                               <b>Manager Access</b>
-                              @else
-                              <b>Normal Staff Access</b>
-                              @endif
-                            </td>
-                          </tr>
-
-                          <br>
-                          <tr>
-                            <td colspan="2">
-                            <a href="/Multiflower-Report-System/manager-home-page" class="btn btn-danger ">Cancel</a>
-                            </td>
-                            <td>
-                              <button type="submit" class="btn btn-success ">Update</button>
-                            </td>
-                          </tr>
-                        </tbody>
-                      </table>
-                    </form>
+                    <div class="col-3 pull-right">
+                      <a href="/Multiflower-Report-System/manager-home-page" class="btn btn-success"><i class="fa fa-reply"></i> Cancel Any Way</a>
                     </div>
-                    <!-- /.card-body -->
+                    <div class="col-3 pull-right">
+                      <a href="/Multiflower-Report-System/manager-delete-staff/{{$user->id}}" class="btn btn-danger"><i class="fa fa-trash"></i> Delete Any Way</a>
+                    </div>
                   </div>
+
                 </div>
-                <!-- /.tab-pane -->
               </div>
               <!-- /.tab-content -->
             </div><!-- /.card-body -->

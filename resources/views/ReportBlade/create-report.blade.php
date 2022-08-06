@@ -30,7 +30,7 @@
         </div>
         <div class="col-sm-6">
           <ol class="breadcrumb float-sm-right">
-            <li class="breadcrumb-item"><a href="#">Home</a></li>
+            <li class="breadcrumb-item"><a href="/Multiflower-Report-System/home-page">Home</a></li>
             <li class="breadcrumb-item active">Compose</li>
           </ol>
         </div>
@@ -50,13 +50,16 @@
             @csrf
             <div class="card card-primary card-outline">
             <div class="card-header">
-              <h3 class="card-title">Compose New Report</h3>
+              <h3 class="card-title">
+                <img src="/assets/img/edit.png" alt="" style="height:50px;">
+                New Report
+              </h3>
             </div>
             <!-- /.card-header -->
             <div class="card-body">
 
               <div class="form-group">
-                <input class="form-control" placeholder="Subject:" name="ReportSubject" value="{{old('ReportSubject')}}">
+                <input class="form-control" placeholder="Subject:" name="ReportSubject" value="{{old('ReportSubject')}}" autofocus>
                 <input type="hidden" class="form-control"  name="userId" value="{{Auth::user()->id}}">
                 <input type="hidden" class="form-control"  name="userName" value="{{Auth::user()->name}}">
                 <input type="hidden" class="form-control"  name="userEmail" value="{{Auth::user()->email}}">
@@ -64,11 +67,9 @@
               </div>
 
               <div class="form-group">
-                  <textarea id="summernote" class="form-control" name="ReportBody" rows="10" cols="50" onkeypress>
-                     Place <em>some</em> <u>text</u> <strong>here</strong>
+                  <textarea id="summernote" class="form-control" name="ReportBody" rows="10" cols="50" autofocus placeholder="Write Your Report Here..." >
                     {{old('ReportBody')}}
                   </textarea>
-                  <div class="text-danger">{{$errors->first('ReportBody')}}</div>
               </div>
 
 

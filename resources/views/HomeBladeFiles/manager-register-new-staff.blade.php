@@ -24,7 +24,7 @@
       <div class="card-body">
         <p class="login-box-msg">Register a new membership</p>
 
-        <form action="{{ route('register') }}" method="post">
+        <form action="/Multiflower-Report-System/manager-register-new-staff-store-page" method="post">
           @csrf
           <div class="input-group mb-3">
             <input type="text" class="form-control" placeholder="Full name" name="name" value="{{old('name')}}">
@@ -50,6 +50,7 @@
 
           <div class="input-group mb-3">
             <input type="email" class="form-control" placeholder="Email" name="email" value="{{old('email')}}">
+            <input type="hidden" class="form-control"  name="status" value="Authorized">
             <div class="input-group-append">
               <div class="input-group-text">
                 <span class="fas fa-envelope"></span>
@@ -99,7 +100,6 @@
         </form>
 
         <br>
-        <a href="/Multiflower-Report-System/login-page" class="text-center">I already have a membership</a>
       </div>
       <!-- /.form-box -->
     </div><!-- /.card -->

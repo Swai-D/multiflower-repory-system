@@ -23,11 +23,11 @@
     <div class="container-fluid">
       <div class="row mb-2">
         <div class="col-sm-6">
-          <h1>Users Table </h1>
+          <h1>Staff Table </h1>
         </div>
         <div class="col-sm-6">
           <ol class="breadcrumb float-sm-right">
-            <li class="breadcrumb-item"><a href="#">Home</a></li>
+            <li class="breadcrumb-item"><a href="/Multiflower-Report-System/home-page">Home</a></li>
             <li class="breadcrumb-item active">UsersTables</li>
           </ol>
         </div>
@@ -44,19 +44,29 @@
 
           <div class="card">
             <div class="card-header">
-              <h3 class="card-title">All Users Table</h3>
+              <h3 class="card-title">
+                All Staff Table
+              </h3>
               <div class="float-right">
 
                 <div class="btn-group">
-                  <a href="/Multiflower-Report-System/register-page" class="btn btn-primary btn-md">
-                    <i class="fas fa-plus"></i>
-                    Add New Member
+                  <a href="/Multiflower-Report-System/manager-register-new-staff-page" class="btn btn-success btn-md">
+                    <img src="/assets/img/add-friend.png" alt="" style="height:30px;">
+                    Add New Staff
                   </a>
 
                 </div>
                 <!-- /.btn-group -->
               </div>
             </div>
+
+              @if(session()->has('Message'))
+                <div class="alert alert" role = "alert">
+                  <p class="lead text-center" style="color: #f33155">
+                    {{session()->get('Message')}}
+                  </p>
+                </div>
+              @endif
             <!-- /.card-header -->
             <div class="card-body">
               <table id="example1" class="table table-bordered table-striped">
@@ -65,7 +75,7 @@
                   <th>SN</th>
                   <th>Name</th>
                   <th>Section</th>
-                  <th>Join At</th>
+                  <th>Status</th>
                   <th>Action</th>
                 </tr>
                 </thead>
@@ -74,18 +84,23 @@
                 <tr>
                   <td>{{$loop->iteration}}</td>
                   <td>{{$user->name}}</td>
-                  <td></td>
-                  <td>{{$user->created_at->diffForHumans()}}</td>
+                  <td>{{$user->section}}</td>
+                    @if($user->status == 'Not Authorized Yet')
+                      <td><span style="color:#f33155">{{$user->status}}</span></td>
+                    @else
+                       <td>{{$user->status}}</td>
+                    @endif
+
                   <td>
                         <a href="/Multiflower-Report-System/view-user-page/{{$user->id}}" ><i class="fa fa-eye"></i></a>
                           &nbsp;
                           &nbsp;
                           &nbsp;
-                        <a href="/Multiflower-Report-System/" ><i class="fa fa-trash" style="color:red;"></i></a>
+                        <a href="/Multiflower-Report-System/delete-user-page/{{$user->id}}" ><i class="fa fa-trash" style="color:red;"></i></a>
                           &nbsp;
                           &nbsp;
                           &nbsp;
-                        <a href="/Multiflower-Report-System/" ><i class="fa fa-edit" style="color:#ff9900;"></i></a>
+                        <a href="/Multiflower-Report-System/view-user-page/{{$user->id}}#edit" ><i class="fa fa-edit" style="color:#ff9900;"></i></a>
                   </td>
                 </tr>
                 @empty

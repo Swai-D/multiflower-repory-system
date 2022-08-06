@@ -14,87 +14,72 @@
 <link rel="stylesheet" href="/admin-assets/dist/css/adminlte.min.css">
 @endsection
 
-@section('my-report-nav-active', 'active')
+@section('manager-nav-active', 'active')
 
 @section('page-content')
+<!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">
   <!-- Content Header (Page header) -->
-  <section class="content-header">
+  @foreach($userAdmin as $user)
+    <section class="content-header">
     <div class="container-fluid">
       <div class="row mb-2">
-        <div class="col-sm-6">
-          <h1>My Inbox </h1>
+        <div class="col-3">
+
         </div>
-        <div class="col-sm-6">
+        <div class="col-sm-6 justify-content-center">
+          <h3  style="color:red;">Remove {{$user->name}} an Admin Privillage ?</h3>
+        </div>
+        <div class="col-sm-3">
           <ol class="breadcrumb float-sm-right">
-            <li class="breadcrumb-item"><a href="/Multiflower-Report-System/home-page">Home</a></li>
-            <li class="breadcrumb-item active">My Inbox</li>
+            <li class="breadcrumb-item"><a href="#">Home</a></li>
+            <li class="breadcrumb-item active">Remove Admin</li>
           </ol>
         </div>
       </div>
     </div><!-- /.container-fluid -->
   </section>
-
+  @endforeach
   <!-- Main content -->
   <section class="content">
-    <div class="container-fluid">
-      <div class="row">
-        <div class="col-12">
-          <!-- /.card -->
 
+    <!-- Default box -->
+    <div class="card">
+      <div class="card-header">
+        <h3 class="card-title">Keep in Mind That</h3>
 
-          <div class="card">
-            <div class="card-header">
-              <h3 class="card-title">
-                <img src="/assets/img/accounting.png" alt="" style="height:50px;">
-                My Report(s)
-              </h3>
-            </div>
-            <!-- /.card-header -->
-            <div class="card-body">
-              <table id="example1" class="table table-bordered table-striped">
-                <thead>
-                <tr>
-                  <th>N0.</th>
+      </div>
+      <div class="card-body">
+        <p class="lead">If you Remove <span style="color:red;">{{$user->name}} </span> an Admin Privilage He/She will no longer be able to perform the following actions</p>
+         <ol type="A">
+          <li><b>Create New Staff Members Records</b></li>
+          <li><b>Read All Staff Members Details</b> </li>
+          <li><b>Update Staff Members Details</b></li>
+          <li><b>Delete Staff Members Details On the Records</b></li>
+        </ol>
+      </div>
+      <!-- /.card-body -->
+      <div class="card-footer">
+        <div class="row">
+          <div class="col-8">
 
-                  <th >Mail Inbox</th>
-
-                </tr>
-
-                </thead>
-                <tbody>
-                @foreach($userReports as $myReports)
-                  <tr>
-                    <td>{{$loop->iteration}}</td>
-                    <td class="mailbox-name"><a href="/Multiflower-Report-System/view-report/{{$myReports->id}}">{{$myReports->ReportSubject}}</a></td>
-
-                  </tr>
-                  @endforeach
-
-                </tbody>
-                <tfoot>
-                  <tr>
-                    <th>N0.</th>
-
-                    <th >Mail Inbox</th>
-
-                  </tr>
-                </tfoot>
-              </table>
-            </div>
-            <!-- /.card-body -->
+          </div>
+          <div class="col-4">
+            <a href="/Multiflower-Report-System/manager-remove-user-admin-access/{{$user->id}}" class="btn btn-danger " >
+               <img src="/assets/img/unauthorized-person.png" alt="" style="height:25px;"> Remove Permission Any Way
+            </a>
           </div>
 
-          <!-- /.card -->
         </div>
-        <!-- /.col -->
       </div>
-      <!-- /.row -->
+      <!-- /.card-footer-->
     </div>
-    <!-- /.container-fluid -->
+    <!-- /.card -->
+
   </section>
   <!-- /.content -->
 </div>
+<!-- /.content-wrapper -->
 @endsection
 
 @section('footer')
@@ -124,8 +109,8 @@
   $(function () {
     $("#example1").DataTable({
       "responsive": true, "lengthChange": false, "autoWidth": false,
-
-    });
+      "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
+    }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
     $('#example2').DataTable({
       "paging": true,
       "lengthChange": false,

@@ -27,7 +27,7 @@
         </div>
         <div class="col-sm-6">
           <ol class="breadcrumb float-sm-right">
-            <li class="breadcrumb-item"><a href="#">Home</a></li>
+            <li class="breadcrumb-item"><a href="/Multiflower-Report-System/home-page">Home</a></li>
             <li class="breadcrumb-item active">InboxTable</li>
           </ol>
         </div>
@@ -38,7 +38,7 @@
 
   @if(session()->has('Message'))
      <div class="alert alert justify-content-center" role = "alert">
-       <p class="lead" style="color: #f33155">
+       <p class="lead text-center" style="color: #f33155">
          {{session()->get('Message')}}
        </p>
      </div>
@@ -52,7 +52,10 @@
 
           <div class="card">
             <div class="card-header">
-              <h3 class="card-title">Inbox</h3>
+              <h3 class="card-title">
+                <img src="/assets/img/notification.png" alt="" style="height:50px;">
+                Inbox
+              </h3>
             </div>
             <!-- /.card-header -->
             <div class="card-body">
