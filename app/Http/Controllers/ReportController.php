@@ -54,37 +54,32 @@ class ReportController extends Controller
       $dom->loadHtml($content, LIBXML_HTML_NOIMPLIED | LIBXML_HTML_NODEFDTD);
       $imageFile = $dom->getElementsByTagName('img');
 
-      if (isset($imageFile)) {
+      foreach($imageFile as $item => $image){
 
-        return redirect()->back()->with('Message', 'Hey Image Uploads Are Not Enabled In This System, Please Write Only Plain Text, Thank You!');
+          $data = $image->getAttribute('src');
+          list($type, $data) = explode(';', $data);
+          list(, $data)      = explode(',', $data);
+          $imgeData = base64_decode($data);
+          $image_name= "/Uploads/ReportImages/" . time().$item.'.png';
+          $imgNameCode = time().$item.'.png';
+          $path = public_path() . $image_name;
+          // file_put_contents($path, $imgeData);
 
-        foreach($imageFile as $item => $image){
+          // It Took me weeks to figureout hoew to implement this function Praise the Lord
+          // return $image;
+          // $filePath = "Uploads/ReportImages/" .$imgNameCode;
+          // Storage::disk('s3')->put($filePath, File::get(public_path('/Uploads/ReportImages/'.$imgNameCode)));
+          // $filePath = Storage::disk('s3')->url($filePath);
 
-            $data = $image->getAttribute('src');
-            list($type, $data) = explode(';', $data);
-            list(, $data)      = explode(',', $data);
-            $imgeData = base64_decode($data);
-            $image_name= "/Uploads/ReportImages/" . time().$item.'.png';
-            $imgNameCode = time().$item.'.png';
-            $path = public_path() . $image_name;
-            file_put_contents($path, $imgeData);
-
-            // It Took me weeks to figureout hoew to implement this function Praise the Lord
-            // return $image;
-            // $filePath = "Uploads/ReportImages/" .$imgNameCode;
-            // Storage::disk('s3')->put($filePath, File::get(public_path('/Uploads/ReportImages/'.$imgNameCode)));
-            // $filePath = Storage::disk('s3')->url($filePath);
-
-            $image->removeAttribute('src');
-            $image->setAttribute('src', $path);
-            // $image->setAttribute('src', $filePath);
-            //Delete Image From  Public Folder
-            // File::delete([public_path('/Uploads/ReportImages/'.$imgNameCode),]);
+          // $image->removeAttribute('src');
+          // $image->setAttribute('src', $path);
+          // $image->setAttribute('src', $filePath);
+          //Delete Image From  Public Folder
+          // File::delete([public_path('/Uploads/ReportImages/'.$imgNameCode),]);
 
 
 
-         }
-      }
+       }
 
 
           $content = $dom->saveHTML();
