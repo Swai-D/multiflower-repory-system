@@ -37,7 +37,13 @@
       </div>
     </div><!-- /.container-fluid -->
   </section>
-
+  @if(session()->has('Message'))
+    <div class="alert alert" role = "alert">
+      <p class="lead text-center" style="color: #f33155">
+        {{session()->get('Message')}}
+      </p>
+    </div>
+  @endif
   <!-- Main content -->
   <section class="content">
     <div class="container-fluid">
