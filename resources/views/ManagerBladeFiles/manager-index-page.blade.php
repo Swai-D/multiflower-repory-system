@@ -23,7 +23,7 @@
     <div class="container-fluid">
       <div class="row mb-2">
         <div class="col-sm-6">
-          <h1>Staff Table </h1>
+          <h1>All Staffs Table </h1>
         </div>
         <div class="col-sm-6">
           <ol class="breadcrumb float-sm-right">
@@ -45,14 +45,15 @@
           <div class="card">
             <div class="card-header">
               <h3 class="card-title">
-                All Staff Table
+                <img src="/assets/img/youth.png" alt="" style="height:50px;">
+
               </h3>
               <div class="float-right">
 
                 <div class="btn-group">
                   <a href="/Multiflower-Report-System/manager-register-new-staff-page" class="btn btn-success btn-md">
-                    <img src="/assets/img/add-friend.png" alt="" style="height:30px;">
-                    Add New Staff
+                    <img src="/assets/img/user.png" alt="" style="height:30px;">
+                    <b>Add New Staff</b>
                   </a>
 
                 </div>
@@ -111,7 +112,7 @@
                     <th>SN</th>
                     <th>Name</th>
                     <th>Section</th>
-                    <th>Join At</th>
+                    <th>Status</th>
                     <th>Action</th>
                   </tr>
                 </tfoot>
