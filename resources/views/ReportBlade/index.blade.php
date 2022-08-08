@@ -63,7 +63,7 @@
                 <thead>
                 <tr>
                   <th>N0.</th>
-                  <th >Mail Inbox</th>
+                  <th >Report Subject</th>
                   <th>By</th>
                   <th>Date</th>
                 </tr>
@@ -75,7 +75,7 @@
                     <td>{{$loop->iteration}}</td>
                     <td class="mailbox-name"><a href="/Multiflower-Report-System/view-report/{{$report->id}}">{{$report->ReportSubject}} </a></td>
                     <td>{{$report->userName}}</td>
-                    <td>{{$report->created_at->diffForHumans()}}</td>
+                    <td>{{$report->created_at->format('d M Y, m:s')}}</td>
                   </tr>
 
                   @empty
@@ -85,7 +85,7 @@
                 <tfoot>
                   <tr>
                     <th>N0.</th>
-                    <th >Mail Inbox</th>
+                    <th >Report Subject</th>
                     <th>By</th>
                     <th>Date</th>
                   </tr>
