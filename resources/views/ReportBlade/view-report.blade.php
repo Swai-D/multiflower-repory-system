@@ -69,12 +69,13 @@
 
           <!-- /.card-footer -->
           <div class="card-footer">
-            <div class="float-right">
-              <!-- <a href="/Multiflower-Report-System/direct-message-show-page" class="btn btn-default"><i class="fas fa-reply" ></i> Reply</a> -->
+            <div class="float-left">
+              <a href="/Multiflower-Report-System/home-page" class="btn btn-primary btn-lg"><i class="fas fa-reply" ></i> Back</a>
               <!-- <a href="/Multiflower-Report-System/direct-message-home-page" class="btn btn-default"><i class="fas fa-share" style="color:blue;"></i> Forward</a> -->
             </div>
-            <br>
-            <button type="button" onclick="printDiv('printMe')" class="btn btn-success btn-lg float-right print-window"><i class="fas fa-print"></i> Print</button>
+           <div class="float-right">
+             <button type="button" onclick="printDiv('printMe')" class="btn btn-success btn-lg print-window"><i class="fas fa-print"></i> Print</button>
+           </div>
           </div>
           <!-- /.card-footer -->
         </div>
