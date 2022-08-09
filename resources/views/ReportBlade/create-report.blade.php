@@ -73,7 +73,7 @@
               </div>
 
               <div class="form-group">
-                  <textarea id="summernote" class="form-control" name="ReportBody" rows="10" cols="50" autofocus placeholder="Write Your Report Here..." >
+                  <textarea id="summernote" class="form-control" name="ReportBody" rows="10" cols="50" autofocus placeholder="Write Your Report Here..." autofocus>
                     {{old('ReportBody')}}
                   </textarea>
               </div>

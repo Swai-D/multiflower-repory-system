@@ -278,9 +278,12 @@
                             <td>Section</td>
                             <td>
                               <select name="section" class="form-control select2" style="width: 100%;">
-                                 <option value="Bwana Shamba" {{ $user->section == 'Bwana Shamba' ? 'selected' : '' }}>Bwana Shamba</option>
-                                 <option value="Store Keeper" {{ $user->section == 'Store Keeper' ? 'selected' : '' }}>Store Keeper</option>
-                                 <option value="Manager" {{ $user->section == 'Manager' ? 'selected' : '' }}>Manager</option>
+                                 <option value="Manager"  {{ $user->section == "Manager" ? 'selected' : '' }}>Manager</option>
+                                 <option value="Administrator"  {{ $user->section == "Administrator" ? 'selected' : '' }}>Administrator</option>
+                                 <option value="Field Officer"  {{ $user->section == "Field Officer" ? 'selected' : '' }}>Field Officer</option>
+                                 <option value="Quality Control"  {{ $user->section == "Quality Control" ? 'selected' : '' }}>Quality Control</option>
+                                 <option value="Stock Seed Selection"  {{ $user->section == "Stock Seed Selection" ? 'selected' : '' }}>Stock Seed Selection</option>
+                                 <option value="Store Keeper"  {{ $user->section == "Store Keeper" ? 'selected' : '' }}>Store Keeper</option>
                                </select>
                             </td>
 

@@ -41,9 +41,12 @@
 
             <select class="custom-select rounded-0" id="exampleSelectRounded0" name="section">
               <option selected disabled>--Choose Section--</option>
-              <option value="Bwana Shamba"  {{ old('section') == "Bwana Shamba" ? 'selected' : '' }}>Bwana Shamba</option>
-              <option value="Store Keeper"  {{ old('section') == "Store Keeper" ? 'selected' : '' }}>Store Keeper</option>
               <option value="Manager"  {{ old('section') == "Manager" ? 'selected' : '' }}>Manager</option>
+              <option value="Administrator"  {{ old('section') == "Administrator" ? 'selected' : '' }}>Administrator</option>
+              <option value="Field Officer"  {{ old('section') == "Field Officer" ? 'selected' : '' }}>Field Officer</option>
+              <option value="Quality Control"  {{ old('section') == "Quality Control" ? 'selected' : '' }}>Quality Control</option>
+              <option value="Stock Seed Selection"  {{ old('section') == "Stock Seed Selection" ? 'selected' : '' }}>Stock Seed Selection</option>
+              <option value="Store Keeper"  {{ old('section') == "Store Keeper" ? 'selected' : '' }}>Store Keeper</option>
             </select>
           </div>
           <div class="text-danger">{{$errors->first('section')}}</div>
