@@ -75,7 +75,7 @@
                     <td>{{$loop->iteration}}</td>
                     <td class="mailbox-name"><a href="/Multiflower-Report-System/view-report/{{$report->id}}">{{$report->ReportSubject}} </a></td>
                     <td>{{$report->userName}}</td>
-                    <td>{{$report->created_at}}</td>
+                    <td>{{$report->created_at->format('d M Y')}} at   {{$report->created_at->format('H:i A')}}</td>
                   </tr>
 
                   @empty

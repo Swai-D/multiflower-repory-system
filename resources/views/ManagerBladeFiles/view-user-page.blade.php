@@ -176,7 +176,7 @@
                             <td>6.</td>
                             <td>Join</td>
                             <td>
-                              <b>{{$user->created_at->format('d M, Y')}} at   {{$user->created_at->format('H:s')}}</b>
+                              <b>{{$user->created_at->format('d M, Y')}} at   {{$user->created_at->format('H:i A')}}</b>
                             </td>
 
                           </tr>
