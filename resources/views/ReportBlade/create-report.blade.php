@@ -77,6 +77,8 @@
                     {{old('ReportBody')}}
                   </textarea>
               </div>
+              <div class="text-danger">{{$errors->first('ReportBody')}}</div>
+
 
 
             </div>
