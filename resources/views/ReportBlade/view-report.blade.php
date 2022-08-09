@@ -55,7 +55,7 @@
             <div class="mailbox-read-info">
               <h5>{{$report->ReportSubject}}</h5>
               <h6>From: {{$report->userEmail}}
-                <span class="mailbox-read-time float-right">{{$report->created_at->format('d M Y, H:i')}}</span></h6>
+                <span class="mailbox-read-time float-right">{{$report->created_at->format('d F Y, h:i:s A')}}</span></h6>
             </div>
             <!-- /.mailbox-read-info -->
 
