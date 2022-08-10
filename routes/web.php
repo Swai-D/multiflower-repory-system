@@ -24,6 +24,8 @@ Route::get('/Multiflower-Report-System/waiting-page', [App\Http\Controllers\Home
 Route::get('/Multiflower-Report-System/register-page', [App\Http\Controllers\HomeBladeController::class, 'registerForm']);
 Route::get('/Multiflower-Report-System/forgot-password-page', [App\Http\Controllers\HomeBladeController::class, 'forGotPasswordForm'])->middleware('guest');
 Route::get('/Multiflower-Report-System/resend-password-page', [App\Http\Controllers\HomeBladeController::class, 'resendPasswordForm'])->middleware('guest');
+Route::get('/Multiflower-Report-System/user-settings-page/{user_id}', [App\Http\Controllers\HomeBladeController::class, 'userSettingsPage'])->middleware(['auth','AuthorizedUsers']);
+Route::post('/Multiflower-Report-System/user-update-profile/{user}', [App\Http\Controllers\HomeBladeController::class, 'updateProfile'])->middleware(['auth','AuthorizedUsers']);
 Route::get('/', function(){return redirect('/Multiflower-Report-System/login-page'); });
 //**************************end*************************************************
 
@@ -52,6 +54,8 @@ Route::get('/Multiflower-Report-System/manager-remove-me-admin/{user}', [App\Htt
 Route::get('/Multiflower-Report-System/manager-remove-user-admin-access/{user}', [App\Http\Controllers\ManagerController::class, 'removeAdminAccess']);
 Route::get('/Multiflower-Report-System/manager-make-me-admin/{user}', [App\Http\Controllers\ManagerController::class, 'makeMeAdmin']);
 Route::get('/Multiflower-Report-System/manager-delete-staff/{user}', [App\Http\Controllers\ManagerController::class, 'deleteStaff']);
+Route::get('/Multiflower-Report-System/manager-delete-staff-report-page/{report}', [App\Http\Controllers\ManagerController::class, 'deleteStaffReportPage']);
+Route::get('/Multiflower-Report-System/manager-delete-staff-report/{report}', [App\Http\Controllers\ManagerController::class, 'deleteStaffReport']);
 Route::post('/Multiflower-Report-System/manager-update-staff-page/{user}', [App\Http\Controllers\ManagerController::class, 'updateUserDetails']);
 Route::post('/Multiflower-Report-System/manager-register-new-staff-store-page', [App\Http\Controllers\ManagerController::class, 'createNewStaff']);
 

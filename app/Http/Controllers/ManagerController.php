@@ -126,4 +126,19 @@ class ManagerController extends Controller
 
     }
 
+    public function deleteStaffReportPage(Report $report)
+    {
+          $userReport = Report::where('id', '=', $report->id)->get();
+          return view('ManagerBladeFiles.delete-user-report-page', compact('userReport'));
+    }
+
+    public function deleteStaffReport(Report $report)
+    {
+          Report::where('id', '=', $report->id)->delete();
+          // Storage::disk('s3')->delete('Uploads/avatars/'.$avatarName);
+          return redirect('/Multiflower-Report-System/home-page')->with('Message', 'You Have Succesfuly Remove The Report In The Records, Thank You !');
+
+
+    }
+
 }

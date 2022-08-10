@@ -71,7 +71,11 @@
           <div class="card-footer">
             <div class="float-left">
               <a href="/Multiflower-Report-System/home-page" class="btn btn-primary btn-lg"><i class="fas fa-reply" ></i> Back</a>
-              <!-- <a href="/Multiflower-Report-System/direct-message-home-page" class="btn btn-default"><i class="fas fa-share" style="color:blue;"></i> Forward</a> -->
+
+              @if(Auth::user()->userType == 'managerAccess' || Auth::user()->userType == 'admin')
+                <a href="/Multiflower-Report-System/manager-delete-staff-report-page/{{$report->id}}" class="btn btn-danger btn-lg"><i class="fas fa-trash" ></i> Delete</a>
+              @endif
+
             </div>
            <div class="float-right">
              <button type="button" onclick="printDiv('printMe')" class="btn btn-success btn-lg print-window"><i class="fas fa-print"></i> Print</button>
