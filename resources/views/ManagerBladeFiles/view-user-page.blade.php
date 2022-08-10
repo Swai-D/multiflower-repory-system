@@ -32,7 +32,7 @@
         <div class="col-sm-6">
           <ol class="breadcrumb float-sm-right">
             <li class="breadcrumb-item"><a href="/Multiflower-Report-System/home-page">Home</a></li>
-            <li class="breadcrumb-item active">User Profile</li>
+            <li class="breadcrumb-item active">Staff Profile</li>
           </ol>
         </div>
       </div>
@@ -68,13 +68,13 @@
 
               <ul class="list-group list-group-unbordered mb-3">
                 <li class="list-group-item">
-                  <b>Reports </b> <a class="float-right">{{$userReportsCount}}</a>
+                  <b>Report(s) </b> <a class="float-right">{{$userReportsCount}}</a>
                 </li>
                 <li class="list-group-item">
                   <b>Section</b> <a class="float-right">{{$user->section}}</a>
                 </li>
                 <li class="list-group-item">
-                  <b>Join</b> <a class="float-right">{{$user->created_at->format('d M, Y')}}</a>
+                  <b>Join</b> <a class="float-right">{{$user->created_at->format("d F Y", strtotime('+3 hours'))}}</a>
                 </li>
               </ul>
 
@@ -91,9 +91,9 @@
           <div class="card">
             <div class="card-header p-2">
               <ul class="nav nav-pills">
-                <li class="nav-item"><a class="nav-link active" href="#activity" data-toggle="tab"><i class="fa fa-eye" style="color:green"></i> User Details</a></li>
-                <li class="nav-item"><a class="nav-link" href="#timeline" data-toggle="tab"><i class="fa fa-envelope" style="color:blue"></i> Reports</a></li>
-                <li class="nav-item"><a class="nav-link" href="#edit" data-toggle="tab"><i class="fa fa-edit" style="color:blue"></i> Edit User Details</a></li>
+                <li class="nav-item"><a class="nav-link active" href="#activity" data-toggle="tab"><i class="fa fa-eye" style="color:green"></i> Staff Details</a></li>
+                <li class="nav-item"><a class="nav-link" href="#timeline" data-toggle="tab"><i class="fa fa-envelope" style="color:blue"></i> Staff Reports</a></li>
+                <li class="nav-item"><a class="nav-link" href="#edit" data-toggle="tab"><i class="fa fa-edit" style="color:blue"></i> Edit Staff Details</a></li>
               </ul>
             </div><!-- /.card-header -->
             <div class="card-body">
@@ -176,7 +176,7 @@
                             <td>6.</td>
                             <td>Join</td>
                             <td>
-                              <b>{{$user->created_at->format('d M, Y')}} at   {{$user->created_at->format('H:i A')}}</b>
+                              <b>{{$user->created_at->format('d M, Y')}} at   {{$user->created_at->format(' h:i:s A', strtotime('+3 hours'))}}</b>
                             </td>
 
                           </tr>
@@ -197,7 +197,7 @@
                       <tr>
                         <th>N0.</th>
 
-                        <th >Mail Inbox</th>
+                        <th >Report(s) List</th>
 
                       </tr>
 
@@ -216,7 +216,7 @@
                         <tr>
                           <th>N0.</th>
 
-                          <th >Mail Inbox</th>
+                          <th >Report(s) List</th>
 
                         </tr>
                       </tfoot>

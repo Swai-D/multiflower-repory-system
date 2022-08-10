@@ -23,12 +23,12 @@
     <div class="container-fluid">
       <div class="row mb-2">
         <div class="col-sm-6">
-          <h1>Inbox Table</h1>
+          <h1>Inbox Report(s)</h1>
         </div>
         <div class="col-sm-6">
           <ol class="breadcrumb float-sm-right">
             <li class="breadcrumb-item"><a href="/Multiflower-Report-System/home-page">Home</a></li>
-            <li class="breadcrumb-item active">InboxTable</li>
+            <li class="breadcrumb-item active">Inbox Report(s)</li>
           </ol>
         </div>
       </div>
@@ -54,7 +54,7 @@
             <div class="card-header">
               <h3 class="card-title">
                 <img src="/assets/img/notification.png" alt="" style="height:50px;">
-                Inbox
+                Inbox Report(s)
               </h3>
             </div>
             <!-- /.card-header -->
@@ -75,7 +75,7 @@
                     <td>{{$loop->iteration}}</td>
                     <td class="mailbox-name"><a href="/Multiflower-Report-System/view-report/{{$report->id}}">{{$report->ReportSubject}} </a></td>
                     <td>{{$report->userName}}</td>
-                    <td>{{$report->created_at}}</td>
+                    <td>{{$report->created_at->format("d F Y, h:i:s A", strtotime('+3 hours'))}}</td>
                   </tr>
 
                   @empty

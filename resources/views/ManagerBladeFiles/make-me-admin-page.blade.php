@@ -62,7 +62,9 @@
       <div class="card-footer">
         <div class="row">
           <div class="col-8">
-
+            <a href="/Multiflower-Report-System/view-user-page/{{$user->id}}" class="btn btn-primary " >
+               <i class="fa fa-reply"></i> Back
+            </a>
           </div>
           <div class="col-4">
             <a href="/Multiflower-Report-System/manager-make-me-admin/{{$user->id}}" class="btn btn-success " >

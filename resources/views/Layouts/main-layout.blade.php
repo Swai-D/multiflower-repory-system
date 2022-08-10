@@ -83,7 +83,7 @@
               <li class="nav-item">
                 <a href="/Multiflower-Report-System/compose-report" class="nav-link @yield('compose-nav-active')">
                   <img src="/assets/img/edit.png" alt="" style="height:30px;">
-                  <p>Compose Report</p>
+                  <p>Compose New Report</p>
                 </a>
               </li>
               <li class="nav-item">

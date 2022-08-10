@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Http\Request;
 use App\Models\Report;
 
 use Auth;
+use File;
 
 class ReportController extends Controller
 {
@@ -56,26 +58,25 @@ class ReportController extends Controller
 
       foreach($imageFile as $item => $image){
 
-          $data = $image->getAttribute('src');
-          list($type, $data) = explode(';', $data);
-          list(, $data)      = explode(',', $data);
-          $imgeData = base64_decode($data);
-          $image_name= "/Uploads/ReportImages/" . time().$item.'.png';
-          $imgNameCode = time().$item.'.png';
-          $path = public_path() . $image_name;
-          // file_put_contents($path, $imgeData);
+        $data = $image->getAttribute('src');
+        list($type, $data) = explode(';', $data);
+        list(, $data)      = explode(',', $data);
+        $imgeData = base64_decode($data);
+        $image_name= "/Uploads/ReportImages/" . time().$item.'.png';
+        $imgNameCode = time().$item.'.png';
+        $path = public_path() . $image_name;
+        file_put_contents($path, $imgeData);
 
-          // It Took me weeks to figureout hoew to implement this function Praise the Lord
-          // return $image;
-          // $filePath = "Uploads/ReportImages/" .$imgNameCode;
-          // Storage::disk('s3')->put($filePath, File::get(public_path('/Uploads/ReportImages/'.$imgNameCode)));
-          // $filePath = Storage::disk('s3')->url($filePath);
+        // It Took me weeks to figureout hoew to implement this function Praise the Lord
+        // return $image;
+        $filePath = "Uploads/ReportImages/" .$imgNameCode;
+        Storage::disk('s3')->put($filePath, File::get(public_path('/Uploads/ReportImages/'.$imgNameCode)));
+        $filePath = Storage::disk('s3')->url($filePath);
 
-          // $image->removeAttribute('src');
-          // $image->setAttribute('src', $path);
-          // $image->setAttribute('src', $filePath);
-          //Delete Image From  Public Folder
-          // File::delete([public_path('/Uploads/ReportImages/'.$imgNameCode),]);
+        $image->removeAttribute('src');
+        $image->setAttribute('src', $filePath);
+        //Delete Image From  Public Folder
+        File::delete([public_path('/Uploads/ReportImages/'.$imgNameCode),]);
 
 
 
