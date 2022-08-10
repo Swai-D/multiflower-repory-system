@@ -138,7 +138,7 @@
                       <br>
                       <tr>
                         <td colspan="2">
-                        <a href="/Multiflower-Report-System/manager-home-page" class="btn btn-danger ">Cancel</a>
+                        <a href="/Multiflower-Report-System/home-page" class="btn btn-danger ">Cancel</a>
                         </td>
                         <td>
                           <button type="submit" class="btn btn-success float-right">Update</button>
