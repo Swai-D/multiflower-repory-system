@@ -63,8 +63,8 @@
             <div class="card-body box-profile">
               <div class="text-center">
                 <img class="profile-user-img img-fluid img-circle"
-                     src="/admin-assets/dist/img/default.png"
-                     alt="User profile picture">
+                     src="{{$user->avatar}}"
+                     alt="User profile picture" style="width:100px; height:100px;">
               </div>
 
               <h3 class="profile-username text-center">{{$user->name}}</h3>
@@ -73,13 +73,13 @@
 
               <ul class="list-group list-group-unbordered mb-3">
                 <li class="list-group-item">
-                  <b>Reports </b> <a class="float-right">{{$userReportsCount}}</a>
+                  <b>Report(s) </b> <a class="float-right">{{$userReportsCount}}</a>
                 </li>
                 <li class="list-group-item">
                   <b>Section</b> <a class="float-right">{{$user->section}}</a>
                 </li>
                 <li class="list-group-item">
-                  <b>Join</b> <a class="float-right">{{$user->created_at->format('d M, Y')}}</a>
+                  <b>Join</b> <a class="float-right">{{$user->created_at->format("d F Y", strtotime('+3 hours'))}}</a>
                 </li>
               </ul>
 
