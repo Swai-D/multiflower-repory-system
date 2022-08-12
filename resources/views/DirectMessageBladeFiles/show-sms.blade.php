@@ -8,6 +8,13 @@
 <link rel="stylesheet" href="/admin-assets/plugins/fontawesome-free/css/all.min.css">
 <!-- Theme style -->
 <link rel="stylesheet" href="/admin-assets/dist/css/adminlte.min.css">
+<!-- summernote -->
+<link rel="stylesheet" href="/admin-assets/plugins/summernote/summernote-bs4.min.css">
+<!-- CodeMirror -->
+<link rel="stylesheet" href="/admin-assets/plugins/codemirror/codemirror.css">
+<link rel="stylesheet" href="/admin-assets/plugins/codemirror/theme/monokai.css">
+<!-- SimpleMDE -->
+
 @endsection
 
 @section('direct-message-nav-active', 'active')
@@ -20,12 +27,12 @@
     <div class="container-fluid">
       <div class="row mb-2">
         <div class="col-sm-6">
-          <h1 class="m-0">Dashboard</h1>
+          <h1 class="m-0">Direct Message</h1>
         </div><!-- /.col -->
         <div class="col-sm-6">
           <ol class="breadcrumb float-sm-right">
             <li class="breadcrumb-item"><a href="#">Home</a></li>
-            <li class="breadcrumb-item active">Dashboard v1</li>
+            <li class="breadcrumb-item active">Direct Message</li>
           </ol>
         </div><!-- /.col -->
       </div><!-- /.row -->
@@ -60,34 +67,53 @@
               <!-- Conversations are loaded here -->
               <div class="direct-chat-messages">
 
-                @foreach($users as $user)
+
                 <!-- Message. Default to the left -->
                 <div class="direct-chat-msg">
                   <div class="direct-chat-infos clearfix">
-                    <span class="direct-chat-name float-left">{{$user->senderName}}</span>
+                    <span class="direct-chat-name float-left">Senser Name</span>
                     <span class="direct-chat-timestamp float-right">23 Jan 2:00 pm</span>
                   </div>
                   <!-- /.direct-chat-infos -->
                   <img class="direct-chat-img" src="/admin-assets/dist/img/user1-128x128.jpg" alt="message user image">
                   <!-- /.direct-chat-img -->
                   <div class="direct-chat-text">
-                    {{$user->text}}
+                    Tex Here
                   </div>
                   <!-- /.direct-chat-text -->
+                  <div class="direct-chat-text">
+                    Tex Here
+                  </div>
+                  <div class="direct-chat-text">
+                    Tex Here
+                  </div>
                 </div>
                 <!-- /.direct-chat-msg -->
+
 
                 <!-- Message to the right -->
                 <div class="direct-chat-msg right">
                   <div class="direct-chat-infos clearfix">
-                    <span class="direct-chat-name float-right">{{$user->receiverName}}</span>
+                    <span class="direct-chat-name float-right">Receiver Name</span>
                     <span class="direct-chat-timestamp float-left">23 Jan 2:05 pm</span>
                   </div>
                   <!-- /.direct-chat-infos -->
                   <img class="direct-chat-img" src="/admin-assets/dist/img/user3-128x128.jpg" alt="message user image">
                   <!-- /.direct-chat-img -->
                   <div class="direct-chat-text">
-
+                   Receiver Text
+                  </div>
+                  <div class="direct-chat-text">
+                   Receiver Text
+                  </div>
+                  <div class="direct-chat-text">
+                   Receiver Text
+                  </div>
+                  <div class="direct-chat-text">
+                   Receiver Text
+                  </div>
+                  <div class="direct-chat-text">
+                   Receiver Text
                   </div>
                   <!-- /.direct-chat-text -->
                 </div>
@@ -100,25 +126,40 @@
 
             </div>
             <!-- /.card-body -->
-            <div class="card-footer">
-              <form action="/Multiflower-Report-System/direct-message-send-sms" method="post">
+            <!-- /.col -->
+            <div class="col-md-12">
+
+              <form class="" action="/Multiflower-Report-System/store-report" method="post">
                 @csrf
-                <div class="input-group">
-                  <input type="text" name="text" placeholder="Type Message ..." class="form-control">
-                  <input type="hidden" name="senderId" class="form-control" value="{{Auth::user()->id}}">
-                  <input type="hidden" name="senderName" class="form-control" value="{{Auth::user()->name}}">
-                  <input type="hidden" name="senderImage" class="form-control" value="{{Auth::user()->avatar}}">
+                <div class="card card-primary card-outline">
+                <!-- /.card-header -->
+                <div class="card-body">
 
+                <div class="footer">
+                  <div class="form-group">
+                      <textarea id="summernote" class="form-control" name="ReportBody" rows="10" cols="50" autofocus placeholder="Write Your Report Here..." autofocus>
+                        {{old('ReportBody')}}
+                      </textarea>
+                  </div>
+                  <div class="text-danger">{{$errors->first('ReportBody')}}</div>
 
-                  <input type="hidden" name="receiver_id" class="form-control" value="{{$user->receiver_id}}">
-                  <input type="hidden" name="receiverName" class="form-control" value="{{$user->receiverName}}">
-                @endforeach
-                  <span class="input-group-append">
-                    <button type="submit" class="btn btn-primary">Send</button>
-                  </span>
                 </div>
-              </form>
+
+
+                </div>
+                <!-- /.card-body -->
+                <div class="card-footer">
+                  <div class="float-right">
+                    <button type="submit" class="btn btn-primary"><i class="far fa-envelope"></i> Send</button>
+                  </div>
+                  <a href="/Multiflower-Report-System/home-page" type="reset" class="btn btn-danger"><i class="fas fa-times"></i> Discard</a>
+                </div>
+                <!-- /.card-footer -->
+              </div>
+              <!-- /.card -->
+             </form>
             </div>
+            <!-- /.col -->
             <!-- /.card-footer-->
           </div>
           <!--/.direct-chat -->
@@ -140,6 +181,17 @@
 <script src="/admin-assets/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
 <!-- AdminLTE App -->
 <script src="/admin-assets/dist/js/adminlte.min.js"></script>
+<!-- Summernote -->
+<script src="/admin-assets/plugins/summernote/summernote-bs4.min.js"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="/admin-assets/dist/js/demo.js"></script>
+<!-- Page specific script -->
+<script>
+  $(function () {
+    //Add text editor
+    $('#summernote').summernote({
+      height: 100,
+    });
+  });
+</script>
 @endsection

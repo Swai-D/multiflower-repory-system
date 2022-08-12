@@ -12,7 +12,7 @@ class ManagerController extends Controller
 {
     public function index()
     {
-      $users = User::where('email', '!=', 'davyswai@gmail.com')->orWhere('name', '!=', 'Davy Swai')->orderBy('created_at', 'desc')->get();
+      $users = User::where('userType', '!=', 'admin')->orderBy('created_at', 'desc')->get();
       return view('ManagerBladeFiles.manager-index-page', compact('users'));
     }
 

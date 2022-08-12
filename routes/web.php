@@ -65,10 +65,12 @@ Route::post('/Multiflower-Report-System/manager-register-new-staff-store-page', 
 
 //**************************DirectMessageController*********************************
 Route::get('/Multiflower-Report-System/direct-message-home-page', [App\Http\Controllers\DirectMessageController::class, 'index'])->middleware(['auth','AuthorizedUsers']);
-Route::get('/Multiflower-Report-System/direct-message-show-page', [App\Http\Controllers\DirectMessageController::class, 'show'])->middleware(['auth','AuthorizedUsers']);
-Route::get('/Multiflower-Report-System/direct-message-create-sms/{user_id}', [App\Http\Controllers\DirectMessageController::class, 'create'])->middleware(['auth','AuthorizedUsers']);
-Route::post('/Multiflower-Report-System/direct-message-send-sms', [App\Http\Controllers\DirectMessageController::class, 'store'])->middleware(['auth','AuthorizedUsers']);
-Route::get('/Multiflower-Report-System/direct-message-read-sms/{direct_messages}', [App\Http\Controllers\DirectMessageController::class, 'show'])->middleware(['auth','AuthorizedUsers']);
+// Route::get('/Multiflower-Report-System/direct-message-forwad-to-page', [App\Http\Controllers\DirectMessageController::class, 'forwadTo'])->middleware(['auth','AuthorizedUsers']);
+Route::get('/Multiflower-Report-System/direct-message-reply-report/{report}', [App\Http\Controllers\DirectMessageController::class, 'replyReport'])->middleware(['auth','AuthorizedUsers']);
+Route::post('/Multiflower-Report-System/direct-message-reply-sms/{report}', [App\Http\Controllers\CommentController::class, 'store'])->middleware(['auth','AuthorizedUsers']);
+// Route::get('/Multiflower-Report-System/direct-message-create-sms/{user_id}', [App\Http\Controllers\DirectMessageController::class, 'create'])->middleware(['auth','AuthorizedUsers']);
+// Route::post('/Multiflower-Report-System/direct-message-send-sms', [App\Http\Controllers\DirectMessageController::class, 'store'])->middleware(['auth','AuthorizedUsers']);
+// Route::get('/Multiflower-Report-System/direct-message-read-sms/{direct_messages}', [App\Http\Controllers\DirectMessageController::class, 'show'])->middleware(['auth','AuthorizedUsers']);
 
 //**************************end*************************************************
 

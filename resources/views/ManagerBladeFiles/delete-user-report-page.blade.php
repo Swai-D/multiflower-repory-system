@@ -50,13 +50,13 @@
 
       </div>
       <div class="card-body">
-        <p class="lead text-cen"><span style="color:red"><b>*</b> </span>If Delete This Report, <span style="color:red;">{{$report->ReportSubject}} by {{$report->userName}} </span>. You Will Not Be Able To Recover It Again<span style="color:red"><b>*</b> </span></p>
+        <p class="lead text-cen"><span style="color:red"><b>*</b> </span>If Delete This Report, <span style="color:red;">"{{$report->ReportSubject}}" </span>. by {{$report->userName}} You Will Not Be Able To Recover It Again<span style="color:red"><b>*</b> </span></p>
       </div>
       <div class="card-body p-0" id="printMe">
         <div class="mailbox-read-info">
           <h5>{{$report->ReportSubject}}</h5>
           <h6>From: {{$report->userEmail}}
-            <span class="mailbox-read-time float-right">{{$report->created_at->format("d F Y, h:i:s A", strtotime('+3 hours'))}}</span></h6>
+            <span class="mailbox-read-time float-right">{{$report->created_at->diffForHumans()}}</span></h6>
         </div>
         <!-- /.mailbox-read-info -->
 

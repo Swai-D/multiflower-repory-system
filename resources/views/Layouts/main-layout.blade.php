@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>@yield('title')</title>
 
+
 @yield('header')
 </head>
 <body class="hold-transition sidebar-mini layout-fixed">
@@ -93,12 +94,12 @@
                 </a>
               </li>
 
-              <li class="nav-item">
-                <a href="/Multiflower-Report-System/Messenger-page" class="nav-link @yield('direct-message-nav-active')">
+              <!-- <li class="nav-item">
+                <a href="/Multiflower-Report-System/direct-message-home-page" class="nav-link @yield('direct-message-nav-active')">
                     <img src="/assets/img/chat.png" alt="" style="height:30px;">
                   <p>Direct Message</p>
                 </a>
-              </li>
+              </li> -->
 
 
                <br>

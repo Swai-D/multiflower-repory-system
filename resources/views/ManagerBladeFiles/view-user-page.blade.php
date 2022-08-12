@@ -74,7 +74,7 @@
                   <b>Section</b> <a class="float-right">{{$user->section}}</a>
                 </li>
                 <li class="list-group-item">
-                  <b>Join</b> <a class="float-right">{{$user->created_at->format("d F Y", strtotime('+3 hours'))}}</a>
+                  <b>Join</b> <a class="float-right">{{$user->created_at->diffForHumans()}}</a>
                 </li>
               </ul>
 
@@ -176,7 +176,7 @@
                             <td>6.</td>
                             <td>Join</td>
                             <td>
-                              <b>{{$user->created_at->format('d M, Y')}} at   {{$user->created_at->format(' h:i:s A', strtotime('+3 hours'))}}</b>
+                              <b>{{$user->created_at->diffForHumans()}}</b>
                             </td>
 
                           </tr>

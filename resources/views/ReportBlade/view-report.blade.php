@@ -55,7 +55,7 @@
             <div class="mailbox-read-info">
               <h5>{{$report->ReportSubject}}</h5>
               <h6>From: {{$report->userEmail}}
-                <span class="mailbox-read-time float-right">{{$report->created_at->format("d F Y, h:i:s A", strtotime('+3 hours'))}}</span></h6>
+                <span class="mailbox-read-time float-right">{{$report->created_at->diffForHumans()}}</span></h6>
             </div>
             <!-- /.mailbox-read-info -->
 
@@ -70,15 +70,17 @@
           <!-- /.card-footer -->
           <div class="card-footer">
             <div class="float-left">
-              <a href="/Multiflower-Report-System/home-page" class="btn btn-primary btn-lg"><i class="fas fa-reply" ></i> Back</a>
+              <a href="/Multiflower-Report-System/home-page" class="btn btn-primary btn-sm"><i class="fas fa-reply" ></i> Back</a>
 
               @if(Auth::user()->userType == 'managerAccess' || Auth::user()->userType == 'admin')
-                <a href="/Multiflower-Report-System/manager-delete-staff-report-page/{{$report->id}}" class="btn btn-danger btn-lg"><i class="fas fa-trash" ></i> Delete</a>
+                <a href="/Multiflower-Report-System/manager-delete-staff-report-page/{{$report->id}}" class="btn btn-danger btn-sm"><i class="fas fa-trash" ></i> Delete</a>
               @endif
 
             </div>
            <div class="float-right">
-             <button type="button" onclick="printDiv('printMe')" class="btn btn-success btn-lg print-window"><i class="fas fa-print"></i> Print</button>
+             <!-- <button type="button" onclick="printDiv('printMe')" class="btn btn-success btn-lg print-window"><i class="fas fa-print"></i> Print</button> -->
+             <a href="/Multiflower-Report-System/direct-message-reply-report/{{$report->id}}" class="btn btn-default btn-sm"><i class="fas fa-reply" ></i> Reply</a>
+
            </div>
           </div>
           <!-- /.card-footer -->

@@ -17,7 +17,7 @@ class AuthorizedUserMiddleware
      */
     public function handle(Request $request, Closure $next)
     {
-        if (Auth::user()->status == 'Authorized') {
+        if (Auth::user()->status == 'Authorized' || Auth::user()->userType == 'admin') {
 
             return $next($request);
         }
