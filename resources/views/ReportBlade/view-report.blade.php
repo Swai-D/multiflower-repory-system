@@ -66,7 +66,73 @@
             <!-- /.mailbox-read-message -->
           </div>
           <!-- /.card-body -->
+          <!-- /.card-footer -->
+          <div class="card-header">
+            <h3 class="card-title">Comment(s)</h3>
+         </div>
+          <!-- /.card-footer -->
+          <div class="col-md-9">
+            <div class="card-body">
+              @foreach($report->comments as $comment)
+                <div class="tab-content">
+                  <div class="active tab-pane" id="activity">
+                    <!-- Post -->
+                    <div class="post">
+                      <div class="user-block">
+                        <img class="img-circle img-bordered-sm" src="{{$comment->user->avatar}}" alt="user image">
+                        <span class="username">
+                          <a href="#">{{$comment->user->name}}</a>
+                        </span>
+                        <span class="description">Shared Public Reply - {{$comment->created_at->diffForHumans()}}</span>
+                      </div>
+                      <!-- /.user-block -->
+                      <p>
+                      {{$comment->body}}
+                      </p>
+                    </div>
+                    <!-- /.post -->
 
+                  </div>
+
+                </div>
+                <!-- /.tab-content -->
+              @endforeach
+              <!-- Post -->
+              <div class="tab-content">
+                <div class="active tab-pane" id="activity">
+
+                  <!-- Post -->
+                  <div class="post">
+                    <div class="user-block">
+                      <img class="img-circle img-bordered-sm" src="{{Auth::user()->avatar}}" alt="User Image">
+                      <span class="username">
+                        <a href="#">{{Auth::user()->name}}</a>
+                      </span>
+                      <span class="description">Reply to {{$report->userName}} Report</span>
+                    </div>
+                    <!-- /.user-block -->
+
+                    <form class="form-horizontal" action="/Multiflower-Report-System/direct-message-reply-sms/{{$report->id}}" method="post">
+                      @csrf
+                      <div class="input-group input-group-sm mb-0">
+                        <input type="text" class="form-control form-control-sm" placeholder="Reply..." name="comment_body">
+                        <div class="input-group-append">
+                          <button type="submit" class="btn btn-success">Send</button>
+                        </div>
+                      </div>
+                    </form>
+                  </div>
+                  <div class="text-danger">{{$errors->first('body')}}</div>
+
+                  <!-- /.post -->
+                </div>
+
+              </div>
+              <!-- /.post -->
+
+              </div><!-- /.card-body -->
+
+          </div>
           <!-- /.card-footer -->
           <div class="card-footer">
             <div class="float-left">
@@ -77,11 +143,7 @@
               @endif
 
             </div>
-           <div class="float-right">
-             <!-- <button type="button" onclick="printDiv('printMe')" class="btn btn-success btn-lg print-window"><i class="fas fa-print"></i> Print</button> -->
-             <a href="/Multiflower-Report-System/direct-message-reply-report/{{$report->id}}" class="btn btn-default btn-sm"><i class="fas fa-reply" ></i> Reply</a>
 
-           </div>
           </div>
           <!-- /.card-footer -->
         </div>
