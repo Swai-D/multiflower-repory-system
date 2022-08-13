@@ -96,8 +96,9 @@
 
                 </div>
                 <!-- /.tab-content -->
+                <hr>
               @endforeach
-              <hr>
+
               <!-- Post -->
               <div class="tab-content">
                 <div class="active tab-pane" id="activity">
