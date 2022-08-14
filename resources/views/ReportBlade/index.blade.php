@@ -74,7 +74,7 @@
                   <tr>
                     <td>{{$loop->iteration}}</td>
                     <td class="mailbox-name">
-                      <a href="/Multiflower-Report-System/view-report/{{$report->id}}">{!! \Illuminate\Support\Str::limit($report->ReportSubject, 60, ' ...') !!} </a>
+                      <a href="/Multiflower-Report-System/view-report/{{$report->id}}">{!! \Illuminate\Support\Str::limit($report->ReportSubject, 50, '...') !!} </a>
                       <br><br>
                       <!-- Post -->
                     @foreach($report->comments as $comment)
@@ -89,12 +89,11 @@
                         </div>
                         <!-- /.user-block -->
                         <p>
-                          {!! \Illuminate\Support\Str::limit($comment->body, 50, ' ...') !!}
+                          {!! \Illuminate\Support\Str::limit($comment->body, 50, '...') !!}
                         </p>
 
                       </div>
                       <!-- /.post -->
-                      <hr>
                       @endforeach
                     </td>
 
